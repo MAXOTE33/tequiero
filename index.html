@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada para Elizabeth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: url('images/b50688e20c3f2638f743988f2c9684b5.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Capa de superposición para suavizar el fondo */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2); /* Capa oscura suave para mejorar legibilidad */
+            z-index: -1;
+        }
+
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(135, 206, 235, 0.7); /* Celeste cielo con transparencia */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="password"] {
+            padding: 10px;
+            font-size: 1.2em;
+            width: 200px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.3em;
+            background-color: #ff66b2; /* Rosa romántico para el botón */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-family: 'Dancing Script', cursive;
+        }
+
+        button:hover {
+            background-color: #e60073;
+            transform: scale(1.05);
+        }
+
+        #error-message {
+            display: none;
+            font-size: 1.2em;
+            color: #ff3333;
+            text-align: center;
+            margin-top: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 20px;
+            }
+            input[type="password"] {
+                width: 180px;
+                font-size: 1em;
+            }
+            button {
+                font-size: 1.1em;
+                padding: 12px 24px;
+            }
+            #error-message {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <input type="password" id="password" placeholder="Ingresa la contraseña">
+        <button onclick="checkPassword()">Entrar</button>
+        <div id="error-message"></div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (password === 'holaaa') {
+                window.location.href = 'hola.html';
+            } else {
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'Contraseña incorrecta, intenta de nuevo';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // Permitir enviar la contraseña con la tecla Enter
+        document.getElementById('password').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
